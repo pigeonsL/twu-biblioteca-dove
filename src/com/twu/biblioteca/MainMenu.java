@@ -25,6 +25,7 @@ public class MainMenu {
         for(String ops:options){
             System.out.println(ops);
         }
+        System.out.println("============================================================================");
     }
     public void showBookList(){
         for(int i=0;i<this.books.size();i++){
@@ -36,12 +37,12 @@ public class MainMenu {
     public void showInvalidInput(){
         System.out.println("Please select a valid option!");
     }
-
     //借书
     public void showCheckoutBookMes(){
         System.out.println("Enter the number of the book you want to checkout:");
         Scanner bookin = new Scanner(System.in);
         int index = bookin.nextInt()-1;
+
         if(checkAvaiBook(index)){
             System.out.println("Thank you! Enjoy the book.");
         }
@@ -51,6 +52,10 @@ public class MainMenu {
     }
     //是否可借
     public boolean checkAvaiBook(int index){
+        //输入不合法
+        if(index<0 || index>this.books.size()-1){
+            return false;
+        }
         Book temp = this.books.get(index);
         if(temp.isCheckOut()==false){
             temp.setCheckOut(true);//借出
@@ -73,6 +78,10 @@ public class MainMenu {
     }
     //还书是否可行
     public boolean returnAvaiBook(int index){
+        //输入不合法
+        if(index<0 || index>this.books.size()-1){
+            return false;
+        }
         Book temp = this.books.get(index);
         if(temp.isCheckOut()){
             temp.setCheckOut(false);//还书成功
