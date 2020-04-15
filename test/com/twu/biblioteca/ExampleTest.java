@@ -36,5 +36,12 @@ public class ExampleTest {
                         "4.Quit\r\n"
                         , output.toString());
     }
+    @Test //1.5 invalid option
+    public void testInvalidOption(){
+        System.setIn(new ByteArrayInputStream((5+ System.getProperty("line.separator")).getBytes()));
+        BibliotecaApp.chose();
+        assertEquals("Please select a valid option!" +
+                System.getProperty("line.separator"), output.toString());
 
+    }
 }
