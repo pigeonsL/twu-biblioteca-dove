@@ -68,4 +68,20 @@ public class ExampleTest {
         assertEquals("Goodbye!" +
                 System.getProperty("line.separator"), output.toString());
     }
+    @Test //1.9 Unsuccess checkout
+    public void testCheckOutUnsucc(){
+        System.setIn(new ByteArrayInputStream((4+ System.getProperty("line.separator")).getBytes()));
+        mainMenu.showCheckoutBookMes();
+        assertEquals("Enter the number of the book you want to checkout:" +
+                System.getProperty("line.separator") + "Sorry,that book is not available!" +
+                System.getProperty("line.separator"), output.toString());
+    }
+    @Test //1.12 Unsuccess Return
+    public void testReturnBookUnsucc(){
+        System.setIn(new ByteArrayInputStream((4+ System.getProperty("line.separator")).getBytes()));
+        mainMenu.showReturnBook();
+        assertEquals("Enter the number of the book you want to return:" +
+                System.getProperty("line.separator") + "That is not a valid book to return." +
+                System.getProperty("line.separator"), output.toString());
+    }
 }
