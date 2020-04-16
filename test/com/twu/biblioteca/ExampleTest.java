@@ -92,4 +92,12 @@ public class ExampleTest {
                 "3The Better Angels of Our NatureSteven Pinker2015false"+
                 System.getProperty("line.separator"), output.toString());
     }
+    @Test //2.1 list of movies
+    public void testShowListOfMovie(){
+        mainMenu.showMovieList();
+        assertEquals("1The Two Popes2019Fernando Meirelles8.6\r\n"+
+                "2The Irishman2019Martin Scorsese8.9\r\n"+
+                "3Gisaengchung2019Joon-ho Bong8.7"+
+                System.getProperty("line.separator"), output.toString());
+    }
 }
