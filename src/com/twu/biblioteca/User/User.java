@@ -24,7 +24,7 @@ public class User {
     public String getPasswd() {
         return passwd;
     }
-    public void showUserInfo(){
+    public void printUserInfo(){
         System.out.println(USER_INFO);
         System.out.println("Name:"+name);
         System.out.println("Email:"+email);

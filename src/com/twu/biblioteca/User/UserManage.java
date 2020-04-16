@@ -2,7 +2,6 @@ package com.twu.biblioteca.User;
 
 import com.twu.biblioteca.IO.Input;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class UserManage {
@@ -24,27 +23,28 @@ public class UserManage {
     public User getCurUser() {
         return curUser;
     }
+
     public boolean isLoggedIn(){
         return curUser != null;
     }
-    public void logIn(PrintStream ps){
+    public void logIn(){
         if(isLoggedIn()){
-            ps.println(ALREADY_LOGIN_MES);
+            System.out.println(ALREADY_LOGIN_MES);
             return;
         }
         curUser = matchUser(Input.getInput(ACCOUNT_MES),Input.getInput(PASSWD_MES));
         if(isLoggedIn())
-            ps.print(LOGIN_MES);
+            System.out.println(LOGIN_MES);
         else
-            ps.print(INVALID_LOGIN_MES);
+            System.out.println(INVALID_LOGIN_MES);
     }
-    public void logOut(PrintStream ps){
+    public void logOut(){
         if(!isLoggedIn()){
-            ps.print(NOT_LOGIN_MES);
+            System.out.println(NOT_LOGIN_MES);
             return;
         }
         curUser=null;
-        ps.print(LOGOUT_MES);
+        System.out.println(LOGOUT_MES);
     }
     private User matchUser(String account,String pwd){
         for(User u:userList){
@@ -55,5 +55,12 @@ public class UserManage {
     }
     private boolean UserVerified(User user,String account,String pwd){
         return user.getAccount().equals(account) && user.getPasswd().equals(pwd);
+    }
+    public void showUserInfo(){
+        if(!isLoggedIn()){
+            System.out.println(NOT_LOGIN_MES);
+            return;
+        }
+        curUser.printUserInfo();
     }
 }

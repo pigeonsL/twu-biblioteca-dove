@@ -8,11 +8,15 @@ public class MainMenu {
 
     private ArrayList<String> options = new ArrayList<String>(Arrays.asList(
             "1.List of books",
-            "2.Checkout a book",
-            "3.Return a book",
-            "4.List of movies",
-            "5.Checkout a movie",
-            "6.Quit"));
+            "2.List of movies",
+            "3.Checkout a book",
+            "4.Checkout a movie",
+            "5.Return a book",
+            "6.Return a movie",
+            "7.Log in",
+            "8.Log out",
+            "9.User Information",
+            "10.Quit"));
     private ArrayList<Book> books=new ArrayList<Book>(Arrays.asList(
             new Book("C++ Primer","Stanley B. Lippman",2013,false),
             new Book("Clean Code","Robert C. Martin",2012,false),
@@ -134,6 +138,31 @@ public class MainMenu {
         }
         else
             return false;//还书失败
+    }
+
+    public void showReturnMovie(){
+        System.out.println("Enter the number of the Movie you want to return:");
+        Scanner removie = new Scanner(System.in);
+        int index = removie.nextInt()-1;
+        if(returnAvaiMovie(index)){
+            System.out.println("Thank you for returning the movie.");
+        }
+        else{
+            System.out.println("That is not a valid movie to return.");
+        }
+    }
+    public boolean returnAvaiMovie(int index){
+        //输入不合法
+        if(index<0 || index>this.movies.size()-1){
+            return false;
+        }
+        Movie temp = this.movies.get(index);
+        if(temp.isCheckOut()){
+            temp.setCheckOut(false);
+            return true;
+        }
+        else
+            return false;
     }
 
 }
