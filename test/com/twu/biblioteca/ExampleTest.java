@@ -46,7 +46,7 @@ public class ExampleTest {
 
     }
     @Test //1.7 checkout success
-    public void testCheckOutSuccess(){
+    public void testCheckOutBookSuccess(){
         System.setIn(new ByteArrayInputStream((2+ System.getProperty("line.separator")).getBytes()));
         mainMenu.showCheckoutBookMes();
         assertEquals("Enter the number of the book you want to checkout:" +
@@ -98,6 +98,14 @@ public class ExampleTest {
         assertEquals("1The Two Popes2019Fernando Meirelles8.6\r\n"+
                 "2The Irishman2019Martin Scorsese8.9\r\n"+
                 "3Gisaengchung2019Joon-ho Bong8.7"+
+                System.getProperty("line.separator"), output.toString());
+    }
+    @Test //2.2 checkout movie
+    public void testCheckOutMoiveSuccess(){
+        System.setIn(new ByteArrayInputStream((2+ System.getProperty("line.separator")).getBytes()));
+        mainMenu.showCheckoutMovieMes();
+        assertEquals("Enter the number of the movie you want to checkout:" +
+                System.getProperty("line.separator") + "Thank you! Enjoy the Movie." +
                 System.getProperty("line.separator"), output.toString());
     }
 }
