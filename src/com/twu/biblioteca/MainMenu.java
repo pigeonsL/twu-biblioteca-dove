@@ -18,24 +18,28 @@ public class MainMenu {
 
     public void showWelcome(){
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
-        System.out.println("============================================================================");
+        //System.out.println("============================================================================");
     }
     public void showOptions(){
         System.out.print("Please select an option from the following:\n");
         for(String ops:options){
             System.out.println(ops);
         }
-        System.out.println("============================================================================");
+       // System.out.println("============================================================================");
     }
     public void showBookList(){
         for(int i=0;i<this.books.size();i++){
             Book temp=this.books.get(i);
             System.out.print(i+1);
-            System.out.printf("\t%-35s%-20s%-10s%-10s\n",temp.getTitle(),temp.getAuthor(),temp.getYearPublish(),temp.isCheckOut());
+            //System.out.printf("\t%-35s%-20s%-10s%-10s\n",temp.getTitle(),temp.getAuthor(),temp.getYearPublish(),temp.isCheckOut());
+            System.out.println(temp.getTitle()+temp.getAuthor()+temp.getYearPublish()+temp.isCheckOut());
         }
     }
     public void showInvalidInput(){
         System.out.println("Please select a valid option!");
+    }
+    public void showQuitMes(){
+        System.out.println("Goodbye!");
     }
     //借书
     public void showCheckoutBookMes(){

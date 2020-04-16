@@ -84,4 +84,12 @@ public class ExampleTest {
                 System.getProperty("line.separator") + "That is not a valid book to return." +
                 System.getProperty("line.separator"), output.toString());
     }
+    @Test //1.2 1.3 List of book
+    public void testShowListOfBook(){
+        mainMenu.showBookList();
+        assertEquals("1C++ PrimerStanley B. Lippman2013false\r\n"+
+                "2Clean CodeRobert C. Martin2012false\r\n"+
+                "3The Better Angels of Our NatureSteven Pinker2015false"+
+                System.getProperty("line.separator"), output.toString());
+    }
 }

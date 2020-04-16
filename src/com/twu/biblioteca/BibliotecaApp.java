@@ -14,28 +14,33 @@ public class BibliotecaApp {
         Scanner in = new Scanner(System.in);
         boolean flag=true;
         while (flag){
-            switch (in.nextInt()){
-                case 1://list
-                    mainMenu.showBookList();
-                    mainMenu.showOptions();
-                    break;
-                case 2://check out
-                    mainMenu.showBookList();
-                    mainMenu.showCheckoutBookMes();
-                    mainMenu.showOptions();
-                    break;
-                case 3://return a book
-                    mainMenu.showBookList();
-                    mainMenu.showReturnBook();
-                    mainMenu.showOptions();
-                    break;
-                case 4://quit
-                    flag=false;
-                    break;
-                default:
-                    mainMenu.showInvalidInput();
-                    break;
+            if(in.hasNext()){
+                switch (in.nextInt()){
+                    case 1://list
+                        mainMenu.showBookList();
+                        mainMenu.showOptions();
+                        break;
+                    case 2://check out
+                        mainMenu.showBookList();
+                        mainMenu.showCheckoutBookMes();
+                        mainMenu.showOptions();
+                        break;
+                    case 3://return a book
+                        mainMenu.showBookList();
+                        mainMenu.showReturnBook();
+                        mainMenu.showOptions();
+                        break;
+                    case 4://quit
+                        flag=false;
+                        mainMenu.showQuitMes();
+                        break;
+                    default:
+                        mainMenu.showInvalidInput();
+                        break;
+                }
             }
+            else
+                break;
         }
 
     }
