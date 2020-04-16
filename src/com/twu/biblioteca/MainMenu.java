@@ -23,7 +23,7 @@ public class MainMenu {
             new Movie("Gisaengchung",2019,"Joon-ho Bong",8.7f,false)));
     public void showWelcome(){
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
-        //System.out.println("============================================================================");
+        System.out.println("============================================================================");
     }
     public void showOptions(){
         System.out.print("Please select an option from the following:\n");
