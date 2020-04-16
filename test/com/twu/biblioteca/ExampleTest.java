@@ -26,6 +26,7 @@ public class ExampleTest {
         assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!"+
                 System.getProperty("line.separator"), output.toString());
     }
+
     @Test //1.4 main menu
     public void testOptions(){
         mainMenu.showOptions();
@@ -43,5 +44,21 @@ public class ExampleTest {
         assertEquals("Please select a valid option!" +
                 System.getProperty("line.separator"), output.toString());
 
+    }
+    @Test //1.7 checkout success
+    public void testCheckOutSuccess(){
+        System.setIn(new ByteArrayInputStream((2+ System.getProperty("line.separator")).getBytes()));
+        mainMenu.showCheckoutBookMes();
+        assertEquals("Enter the number of the book you want to checkout:" +
+                System.getProperty("line.separator") + "Thank you! Enjoy the book." +
+                System.getProperty("line.separator"), output.toString());
+    }
+    @Test //1.10 Return a book
+    public void testReturnBook(){
+        System.setIn(new ByteArrayInputStream((2+ System.getProperty("line.separator")).getBytes()));
+        mainMenu.showReturnBook();
+        assertEquals("Enter the number of the book you want to return:" +
+                System.getProperty("line.separator") + "Thank you for returning the book." +
+                System.getProperty("line.separator"), output.toString());
     }
 }
