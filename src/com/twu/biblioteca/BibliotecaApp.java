@@ -16,11 +16,11 @@ public class BibliotecaApp {
         while (flag){
             if(in.hasNext()){
                 switch (in.nextInt()){
-                    case 1://list
+                    case 1://list of books
                         mainMenu.showBookList();
                         mainMenu.showOptions();
                         break;
-                    case 2://check out
+                    case 2://check out book
                         mainMenu.showBookList();
                         mainMenu.showCheckoutBookMes();
                         mainMenu.showOptions();
@@ -30,7 +30,10 @@ public class BibliotecaApp {
                         mainMenu.showReturnBook();
                         mainMenu.showOptions();
                         break;
-                    case 4://quit
+                    case 4: //list of movies
+                        mainMenu.showMovieList();
+                        break;
+                    case 5://quit
                         flag=false;
                         mainMenu.showQuitMes();
                         break;

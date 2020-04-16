@@ -10,12 +10,16 @@ public class MainMenu {
             "1.List of books",
             "2.Checkout a book",
             "3.Return a book",
-            "4.Quit"));
+            "4.List of movies",
+            "5.Quit"));
     private ArrayList<Book> books=new ArrayList<Book>(Arrays.asList(
             new Book("C++ Primer","Stanley B. Lippman",2013,false),
             new Book("Clean Code","Robert C. Martin",2012,false),
             new Book("The Better Angels of Our Nature","Steven Pinker",2015,false)));
-
+    private ArrayList<Movie> movies=new ArrayList<Movie>(Arrays.asList(
+            new Movie("The Two Popes",2019,"Fernando Meirelles",8.6f),
+            new Movie("The Irishman",2019,"Martin Scorsese",8.9f),
+            new Movie("Gisaengchung",2019,"Joon-ho Bong",8.7f)));
     public void showWelcome(){
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
         //System.out.println("============================================================================");
@@ -34,6 +38,14 @@ public class MainMenu {
             //为了便于测试，取消了格式控制输出
             //System.out.printf("\t%-35s%-20s%-10s%-10s\n",temp.getTitle(),temp.getAuthor(),temp.getYearPublish(),temp.isCheckOut());
             System.out.println(temp.getTitle()+temp.getAuthor()+temp.getYearPublish()+temp.isCheckOut());
+        }
+    }
+    public void showMovieList(){
+        for(int i=0;i<this.movies.size();i++){
+            Movie temp=this.movies.get(i);
+            System.out.print(i+1);
+            //System.out.printf("\t%-20s%-10s%-20s%-20s\n",temp.getName(),temp.getYear(),temp.getDirector(),temp.getRating());
+            System.out.println(temp.getName()+temp.getYear()+temp.getDirector()+temp.getRating());
         }
     }
     public void showInvalidInput(){
