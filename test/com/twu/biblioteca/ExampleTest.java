@@ -61,4 +61,11 @@ public class ExampleTest {
                 System.getProperty("line.separator") + "Thank you for returning the book." +
                 System.getProperty("line.separator"), output.toString());
     }
+    @Test //1.6 Quit the app
+    public void testQuitApp(){
+        System.setIn(new ByteArrayInputStream((4+ System.getProperty("line.separator")).getBytes()));
+        BibliotecaApp.chose();
+        assertEquals("Goodbye!" +
+                System.getProperty("line.separator"), output.toString());
+    }
 }
