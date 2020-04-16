@@ -11,15 +11,16 @@ public class MainMenu {
             "2.Checkout a book",
             "3.Return a book",
             "4.List of movies",
-            "5.Quit"));
+            "5.Checkout a movie",
+            "6.Quit"));
     private ArrayList<Book> books=new ArrayList<Book>(Arrays.asList(
             new Book("C++ Primer","Stanley B. Lippman",2013,false),
             new Book("Clean Code","Robert C. Martin",2012,false),
             new Book("The Better Angels of Our Nature","Steven Pinker",2015,false)));
     private ArrayList<Movie> movies=new ArrayList<Movie>(Arrays.asList(
-            new Movie("The Two Popes",2019,"Fernando Meirelles",8.6f),
-            new Movie("The Irishman",2019,"Martin Scorsese",8.9f),
-            new Movie("Gisaengchung",2019,"Joon-ho Bong",8.7f)));
+            new Movie("The Two Popes",2019,"Fernando Meirelles",8.6f,false),
+            new Movie("The Irishman",2019,"Martin Scorsese",8.9f,false),
+            new Movie("Gisaengchung",2019,"Joon-ho Bong",8.7f,false)));
     public void showWelcome(){
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
         //System.out.println("============================================================================");
@@ -45,7 +46,7 @@ public class MainMenu {
             Movie temp=this.movies.get(i);
             System.out.print(i+1);
             //System.out.printf("\t%-20s%-10s%-20s%-20s\n",temp.getName(),temp.getYear(),temp.getDirector(),temp.getRating());
-            System.out.println(temp.getName()+temp.getYear()+temp.getDirector()+temp.getRating());
+            System.out.println(temp.getName()+temp.getYear()+temp.getDirector()+temp.getRating()+temp.isCheckOut());
         }
     }
     public void showInvalidInput(){
@@ -74,6 +75,33 @@ public class MainMenu {
             return false;
         }
         Book temp = this.books.get(index);
+        if(temp.isCheckOut()==false){
+            temp.setCheckOut(true);//借出
+            return true;
+        }
+        else
+            return false;
+    }
+    //checkout movie
+    public void showCheckoutMovieMes(){
+        System.out.println("Enter the number of the movie you want to checkout:");
+        Scanner moviein = new Scanner(System.in);
+        int index = moviein.nextInt()-1;
+
+        if(checkAvaiMovie(index)){
+            System.out.println("Thank you! Enjoy the Movie.");
+        }
+        else{
+            System.out.println("Sorry,that movie is not available!");
+        }
+    }
+    //是否可借
+    public boolean checkAvaiMovie(int index){
+        //输入不合法
+        if(index<0 || index>this.movies.size()-1){
+            return false;
+        }
+        Movie temp = this.movies.get(index);
         if(temp.isCheckOut()==false){
             temp.setCheckOut(true);//借出
             return true;

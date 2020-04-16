@@ -32,8 +32,14 @@ public class BibliotecaApp {
                         break;
                     case 4: //list of movies
                         mainMenu.showMovieList();
+                        mainMenu.showOptions();
                         break;
-                    case 5://quit
+                    case 5://checkout movie
+                        mainMenu.showMovieList();
+                        mainMenu.showCheckoutMovieMes();
+                        mainMenu.showOptions();
+                        break;
+                    case 6:
                         flag=false;
                         mainMenu.showQuitMes();
                         break;
