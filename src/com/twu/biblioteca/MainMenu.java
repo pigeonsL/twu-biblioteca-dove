@@ -31,6 +31,7 @@ public class MainMenu {
         for(int i=0;i<this.books.size();i++){
             Book temp=this.books.get(i);
             System.out.print(i+1);
+            //为了便于测试，取消了格式控制输出
             //System.out.printf("\t%-35s%-20s%-10s%-10s\n",temp.getTitle(),temp.getAuthor(),temp.getYearPublish(),temp.isCheckOut());
             System.out.println(temp.getTitle()+temp.getAuthor()+temp.getYearPublish()+temp.isCheckOut());
         }
