@@ -1,11 +1,14 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.User.UserManage;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainMenu {
-
+    private UserManage userManage;
+    private static final String LOGIN_WARN = "Please login...";
     private ArrayList<String> options = new ArrayList<String>(Arrays.asList(
             "1.List of books",
             "2.List of movies",
@@ -17,6 +20,7 @@ public class MainMenu {
             "8.Log out",
             "9.User Information",
             "10.Quit"));
+
     private ArrayList<Book> books=new ArrayList<Book>(Arrays.asList(
             new Book("C++ Primer","Stanley B. Lippman",2013,false),
             new Book("Clean Code","Robert C. Martin",2012,false),
@@ -34,23 +38,23 @@ public class MainMenu {
         for(String ops:options){
             System.out.println(ops);
         }
-       // System.out.println("============================================================================");
+        System.out.println("============================================================================");
     }
     public void showBookList(){
         for(int i=0;i<this.books.size();i++){
             Book temp=this.books.get(i);
             System.out.print(i+1);
             //为了便于测试，取消了格式控制输出
-            //System.out.printf("\t%-35s%-20s%-10s%-10s\n",temp.getTitle(),temp.getAuthor(),temp.getYearPublish(),temp.isCheckOut());
-            System.out.println(temp.getTitle()+temp.getAuthor()+temp.getYearPublish()+temp.isCheckOut());
+            System.out.printf("\t%-35s%-20s%-10s%-10s\n",temp.getTitle(),temp.getAuthor(),temp.getYearPublish(),temp.isCheckOut());
+            //System.out.println(temp.getTitle()+temp.getAuthor()+temp.getYearPublish()+temp.isCheckOut());
         }
     }
     public void showMovieList(){
         for(int i=0;i<this.movies.size();i++){
             Movie temp=this.movies.get(i);
             System.out.print(i+1);
-            //System.out.printf("\t%-20s%-10s%-20s%-20s\n",temp.getName(),temp.getYear(),temp.getDirector(),temp.getRating());
-            System.out.println(temp.getName()+temp.getYear()+temp.getDirector()+temp.getRating()+temp.isCheckOut());
+            System.out.printf("\t%-20s%-10s%-20s%-20s\n",temp.getName(),temp.getYear(),temp.getDirector(),temp.getRating());
+            //System.out.println(temp.getName()+temp.getYear()+temp.getDirector()+temp.getRating()+temp.isCheckOut());
         }
     }
     public void showInvalidInput(){

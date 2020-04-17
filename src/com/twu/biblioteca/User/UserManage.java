@@ -3,11 +3,14 @@ package com.twu.biblioteca.User;
 import com.twu.biblioteca.IO.Input;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UserManage {
     private User curUser;
-    private ArrayList<User> userList;
-
+    private ArrayList<User> userList = new ArrayList<User>(Arrays.asList(
+            new User("dove","dove@mail.com","123-4567","dove","dove"),
+            new User("pigeon","pigeon@mail.com","234-5678","pigeon","pigeon"),
+            new User("Rain","rain@mail.com","888-8888","rain","rain")));
     private static final String LOGIN_MES="Logged in successfully";
     private static final String INVALID_LOGIN_MES="Invalid login";
     private static final String ALREADY_LOGIN_MES="Already logged in";
@@ -15,11 +18,10 @@ public class UserManage {
     private static final String NOT_LOGIN_MES="No user is logged in";
     private static final String ACCOUNT_MES="Your Account:";
     private static final String PASSWD_MES="Your Password:";
-
+    public UserManage(){}
     public UserManage(ArrayList<User> userList) {
         this.userList = userList;
     }
-
     public User getCurUser() {
         return curUser;
     }
