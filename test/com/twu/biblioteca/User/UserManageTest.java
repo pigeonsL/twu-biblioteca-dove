@@ -11,8 +11,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -23,7 +22,7 @@ public class UserManageTest {
     ByteArrayOutputStream output;
     @Rule
     public final TextFromStandardInputStream systemInMock = emptyStandardInputStream();
-    public final SystemOutRule systemOutput = new SystemOutRule();
+    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
     @Before
     public void setUp(){
@@ -36,8 +35,7 @@ public class UserManageTest {
         user2 = mock(User.class);
         when(user2.getAccount()).thenReturn("rain");
         when(user2.getPasswd()).thenReturn("rain");
-        ArrayList<User> userList = new ArrayList<User>();
-        userList.addAll(Arrays.asList(user1,user2));
+        ArrayList<User> userList = new ArrayList<User>(Arrays.asList(user1,user2));
         userManage = new UserManage(userList);
     }
 
@@ -56,6 +54,24 @@ public class UserManageTest {
         assertEquals("Your Account:" + "Your Password:" + "Logged in successfully\r\n"
                 +"Logged out successfully\r\n", output.toString());
     }
-
+    @Test //login error
+    public void testInvalidLogin(){
+        systemInMock.provideLines("dfa","dfa");
+        userManage.logIn();
+        assertEquals("Your Account:" + "Your Password:" + "Invalid login\r\n", output.toString());
+    }
+    @Test //re-login
+    public void testReLogin(){
+        systemInMock.provideLines("dove","dove");
+        userManage.logIn();
+        userManage.logIn();
+        assertEquals("Your Account:" + "Your Password:" + "Logged in successfully\r\n"+
+                "Already logged in\r\n", output.toString());
+    }
+    @Test //logout error
+    public void testInvalidLogout(){
+        userManage.logOut();
+        assertEquals("No user is logged in\r\n", output.toString());
+    }
 
 }
